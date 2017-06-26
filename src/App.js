@@ -16,8 +16,17 @@ class App extends Component {
 
   handleKeyPress = (event) => {
     if(event.key === 'Enter'){
-      this.setState({ domain: event.target.value });
+      this.grabDomain(event.target.value);
     }
+  }
+
+  grabDomain(domain) {
+    this.setState({ domain: domain });
+    fetch(`http://localhost:3001/api/${domain}`)
+      .then(respose => respose.json())
+      .then(json => {
+        this.setState({ registerA: json.registerA });
+      });
   }
 
   render() {
@@ -29,7 +38,7 @@ class App extends Component {
           <input type="text" size="50" placeholder="digite o endereço"
             onKeyPress={this.handleKeyPress}/>
         </div>
-        <p className="App-intro">
+        <div className="App-intro">
           <div>
             <h3>Domínio</h3>
             <p>{ this.state.domain }</p>
@@ -38,7 +47,7 @@ class App extends Component {
             <h3>Registro A</h3>
             <p>{ this.state.registerA.address }</p>
           </div>
-        </p>
+        </div>
       </div>
     );
   }
