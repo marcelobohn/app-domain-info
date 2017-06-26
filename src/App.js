@@ -8,10 +8,18 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Consulta de dados de dominio</h2>
+          <input type="text" size="50" placeholder="digite o endereço"/>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          <div>
+            <h3>Domínio</h3>
+            <p></p>
+          </div>
+          <div>
+            <h3>Registro A</h3>
+            <p></p>
+          </div>
         </p>
       </div>
     );
