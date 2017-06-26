@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import RegisterA from './components/RegisterA'
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +23,8 @@ class App extends Component {
 
   grabDomain(domain) {
     this.setState({ domain: domain });
-    fetch(`http://localhost:3001/api/${domain}`)
+    this.setState({ registerA: '' });
+    fetch(`https://api-domain-info.herokuapp.com/api/${domain}`)
       .then(respose => respose.json())
       .then(json => {
         this.setState({ registerA: json.registerA });
@@ -43,10 +45,7 @@ class App extends Component {
             <h3>Domínio</h3>
             <p>{ this.state.domain }</p>
           </div>
-          <div>
-            <h3>Registro A</h3>
-            <p>{ this.state.registerA.address }</p>
-          </div>
+          { this.state.registerA.address && <RegisterA address={ this.state.registerA.address }/>}
         </div>
       </div>
     );
