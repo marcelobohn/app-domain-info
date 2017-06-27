@@ -1,10 +1,11 @@
 import React from 'react';
+import { Panel } from 'react-bootstrap';
 
 export default function RegisterA(props) {
+  const title = "Registro A";
   return (
-    <div>
-      <h3>Registro A</h3>
+    <Panel header={title}>
       <p>{ props.address }</p>
-    </div>
+    </Panel>
   );
 }
